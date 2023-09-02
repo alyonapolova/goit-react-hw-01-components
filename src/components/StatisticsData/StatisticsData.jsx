@@ -1,9 +1,18 @@
+import PropTypes from 'prop-types';
 import css from './StatisticsData.module.css';
-export const StatisticsData = ({ id, label, percentage }) => {
+
+export const StatisticsData = ({ label, percentage, backgroundColor }) => {
+  const itemStyle = { backgroundColor: backgroundColor };
   return (
-    <li className={css.item}>
+    <div className={css.item} style={itemStyle}>
       <span className={css.label}>{label}</span>
       <span className="percentage">{percentage}%</span>
-    </li>
+    </div>
   );
+};
+
+StatisticsData.propTypes = {
+  label: PropTypes.string.isRequired,
+  percentage: PropTypes.number.isRequired,
+  backgroundColor: PropTypes.string.isRequired,
 };

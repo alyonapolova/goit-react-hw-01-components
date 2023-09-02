@@ -4,19 +4,32 @@ import css from './Statistics.module.css';
 export const Statistics = ({ title, stats }) => {
   return (
     <div className={css.statistics}>
-      {title && <h2 className={css.title}>{title}</h2>}
-      <ul className={css.datalist}>
+      <div className={css.titleblock}>
+        {title && <h2 className={css.title}>{title}</h2>}
+      </div>
+
+      <div className={css.datalist}>
         {stats.map(info => (
           <StatisticsData
             key={info.id}
             label={info.label}
             percentage={info.percentage}
+            backgroundColor={getRandomColor()}
           />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
+
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 
 Statistics.propTypes = {
   title: PropTypes.string.isRequired,

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import css from './ProfileCard.module.css';
 export const ProfileCard = ({ username, tag, location, avatar, stats }) => {
   return (
@@ -25,4 +26,12 @@ export const ProfileCard = ({ username, tag, location, avatar, stats }) => {
       </ul>
     </div>
   );
+};
+
+ProfileCard.propTypes = {
+  username: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+  stats: PropTypes.object.isRequired,
 };
